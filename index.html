@@ -29,14 +29,15 @@
 
 <header class="header">
 
-    <div class="container">
+    <div class="container header-inner">
 
+        <!-- Логотип -->
         <a href="#" class="logo">
-
             VICTORIA
-
         </a>
 
+
+        <!-- Навигация для компьютера -->
         <nav class="nav">
 
             <a href="#catalog">Каталог</a>
@@ -49,13 +50,54 @@
 
         </nav>
 
+
+        <!-- Кнопка заказа -->
         <a href="#contacts" class="header-button">
-
             Заказать
-
         </a>
 
+
+        <!-- Кнопка меню -->
+        <button class="menu-button" id="menuButton" aria-label="Открыть меню">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
     </div>
+
+</header>
+
+
+<!-- =========================================
+     МОБИЛЬНОЕ МЕНЮ
+========================================= -->
+
+<div class="mobile-menu" id="mobileMenu">
+
+    <button class="mobile-menu-close" id="mobileMenuClose">
+        &times;
+    </button>
+
+    <nav>
+
+        <a href="#catalog">Каталог</a>
+
+        <a href="#reviews">Отзывы</a>
+
+        <a href="#faq">FAQ</a>
+
+        <a href="#contacts">Контакты</a>
+
+    </nav>
+
+    <a href="#contacts" class="mobile-order-button">
+        Заказать приглашение
+    </a>
+
+</div>
 
 </header>
 

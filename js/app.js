@@ -234,3 +234,52 @@ faqItems.forEach(item => {
     });
 
 });
+
+// =========================================
+// МОБИЛЬНОЕ МЕНЮ
+// =========================================
+
+const menuButton = document.getElementById("menuButton");
+
+const mobileMenu = document.getElementById("mobileMenu");
+
+const mobileMenuClose = document.getElementById("mobileMenuClose");
+
+
+// Открыть меню
+
+menuButton.addEventListener("click", () => {
+
+    mobileMenu.classList.add("active");
+
+    document.body.style.overflow = "hidden";
+
+});
+
+
+// Закрыть меню
+
+mobileMenuClose.addEventListener("click", () => {
+
+    mobileMenu.classList.remove("active");
+
+    document.body.style.overflow = "";
+
+});
+
+
+// Закрытие при нажатии на ссылку
+
+const mobileLinks = mobileMenu.querySelectorAll("a");
+
+mobileLinks.forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        mobileMenu.classList.remove("active");
+
+        document.body.style.overflow = "";
+
+    });
+
+});
