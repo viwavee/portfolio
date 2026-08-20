@@ -680,6 +680,28 @@ section{
 
     color:#2b2b2b;
 
+    margin-bottom:10px;
+
+}
+
+.template-price{
+
+    display:inline-block;
+
+    font-family:"Inter",sans-serif;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    color:#7B3847;
+
+    background:rgba(123,56,71,.08);
+
+    padding:6px 16px;
+
+    border-radius:50px;
+
 }
 
 
@@ -748,15 +770,19 @@ section{
 
 }
 
+body.modal-open{
+
+    overflow:hidden;
+
+}
+
 .modal-overlay{
 
     position:absolute;
 
     inset:0;
 
-    background:rgba(0,0,0,.65);
-
-    backdrop-filter:blur(5px);
+    background:#000;
 
 }
 
@@ -764,29 +790,108 @@ section{
 
     position:relative;
 
-    width:min(90%,700px);
+    width:100%;
 
-    background:#fff;
+    height:100%;
 
-    border-radius:24px;
+    height:100dvh;
 
-    padding:25px;
+    background:#000;
 
     z-index:2;
 
-    animation:modalOpen .3s ease;
+    animation:modalOpen .25s ease;
 
-    text-align:center;
+    display:flex;
+
+    flex-direction:column;
 
 }
 
-.modal-content img{
+/* Область фото — здесь работает зум и свайп */
 
-    width:100%;
+.modal-image-wrap{
 
-    border-radius:18px;
+    position:relative;
 
-    margin-bottom:20px;
+    flex:1;
+
+    overflow:hidden;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    touch-action:none;
+
+}
+
+.modal-image-wrap img{
+
+    max-width:100%;
+
+    max-height:100%;
+
+    object-fit:contain;
+
+    user-select:none;
+
+    -webkit-user-drag:none;
+
+    will-change:transform;
+
+    cursor:zoom-in;
+
+    transition:transform .25s ease;
+
+}
+
+.modal-image-wrap.dragging img{
+
+    transition:none;
+
+}
+
+.modal-image-wrap.zoomed img{
+
+    cursor:grab;
+
+}
+
+.modal-image-wrap.zoomed.dragging img{
+
+    cursor:grabbing;
+
+}
+
+/* Нижняя панель с названием и кнопкой */
+
+.modal-footer{
+
+    position:absolute;
+
+    left:0;
+
+    right:0;
+
+    bottom:0;
+
+    padding:70px 25px 28px;
+
+    text-align:center;
+
+    background:linear-gradient(to top, rgba(0,0,0,.8), rgba(0,0,0,0));
+
+    pointer-events:none;
+
+}
+
+.modal-footer h2,
+.modal-footer .modal-button{
+
+    pointer-events:auto;
 
 }
 
@@ -794,9 +899,11 @@ section{
 
     font-family:"Playfair Display",serif;
 
-    font-size:34px;
+    font-size:26px;
 
-    margin-bottom:25px;
+    color:#fff;
+
+    margin-bottom:18px;
 
 }
 
@@ -828,23 +935,125 @@ section{
 
     position:absolute;
 
-    top:15px;
+    top:20px;
 
-    right:15px;
+    right:20px;
 
-    width:42px;
+    width:44px;
 
-    height:42px;
+    height:44px;
 
     border:none;
 
     border-radius:50%;
 
-    background:#f3f3f3;
+    background:rgba(255,255,255,.12);
+
+    color:#fff;
 
     cursor:pointer;
 
     font-size:24px;
+
+    z-index:3;
+
+    backdrop-filter:blur(6px);
+
+}
+
+.modal-close:hover{
+
+    background:rgba(255,255,255,.22);
+
+}
+
+/* Стрелки — только для устройств с мышью, на тач-устройствах листают свайпом */
+
+.modal-nav{
+
+    display:none;
+
+    position:absolute;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:52px;
+
+    height:52px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.12);
+
+    color:#fff;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+    z-index:3;
+
+    backdrop-filter:blur(6px);
+
+    transition:.25s;
+
+}
+
+.modal-nav:hover{
+
+    background:rgba(255,255,255,.25);
+
+}
+
+.modal-prev{ left:20px; }
+
+.modal-next{ right:20px; }
+
+@media (hover:hover) and (pointer:fine){
+
+    .modal-nav{
+
+        display:flex;
+
+        align-items:center;
+
+        justify-content:center;
+
+    }
+
+}
+
+/* Индикатор для свайпа на тач-устройствах */
+
+.modal-swipe-hint{
+
+    position:absolute;
+
+    top:20px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    color:rgba(255,255,255,.6);
+
+    font-size:13px;
+
+    letter-spacing:.5px;
+
+    z-index:3;
+
+    pointer-events:none;
+
+}
+
+@media (hover:hover) and (pointer:fine){
+
+    .modal-swipe-hint{ display:none; }
 
 }
 
@@ -854,15 +1063,11 @@ section{
 
         opacity:0;
 
-        transform:scale(.9);
-
     }
 
     to{
 
         opacity:1;
-
-        transform:scale(1);
 
     }
 
@@ -1158,20 +1363,6 @@ section{
 
 }
 
-.modal-content{
-
-    width:94%;
-
-    padding:18px;
-
-}
-
-.modal-content h2{
-
-    font-size:28px;
-
-}
-
 }
 
 
@@ -1253,43 +1444,159 @@ section{
 
     display:flex;
 
-    justify-content:center;
+    flex-direction:column;
 
-    flex-wrap:wrap;
+    align-items:center;
 
-    gap:25px;
+    gap:16px;
 
 }
 
 .social-card{
 
-    min-width:180px;
+    display:flex;
 
-    padding:18px 30px;
+    align-items:center;
 
-    border-radius:20px;
-
-    background:#ffffff;
-
-    color:#2b2b2b;
+    gap:14px;
 
     text-decoration:none;
 
     font-weight:600;
 
-    box-shadow:0 12px 35px rgba(0,0,0,.08);
-
     transition:.35s;
 
 }
 
-.social-card:hover{
+.social-icon{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+.social-icon svg{
+
+    width:100%;
+
+    height:100%;
+
+}
+
+/* Основная карточка — VK */
+
+.social-primary{
+
+    width:100%;
+
+    max-width:420px;
+
+    justify-content:center;
+
+    padding:22px 34px;
+
+    border-radius:20px;
 
     background:#7B3847;
 
-    color:white;
+    color:#fff;
+
+    box-shadow:0 16px 40px rgba(123,56,71,.28);
+
+}
+
+.social-primary:hover{
 
     transform:translateY(-6px);
+
+    box-shadow:0 20px 48px rgba(123,56,71,.36);
+
+}
+
+.social-primary .social-icon{
+
+    width:42px;
+
+    height:42px;
+
+    flex-shrink:0;
+
+    color:#fff;
+
+}
+
+.social-text{
+
+    display:flex;
+
+    flex-direction:column;
+
+    text-align:left;
+
+}
+
+.social-text strong{
+
+    font-size:17px;
+
+}
+
+.social-text small{
+
+    font-weight:400;
+
+    font-size:13px;
+
+    opacity:.75;
+
+}
+
+/* Второстепенные — Telegram / Instagram */
+
+.social-secondary{
+
+    display:flex;
+
+    gap:12px;
+
+}
+
+.social-mini{
+
+    padding:12px 22px;
+
+    border-radius:50px;
+
+    background:#ffffff;
+
+    color:#2b2b2b;
+
+    font-size:14px;
+
+    box-shadow:0 8px 24px rgba(0,0,0,.06);
+
+}
+
+.social-mini:hover{
+
+    background:#7B3847;
+
+    color:#fff;
+
+    transform:translateY(-4px);
+
+}
+
+.social-mini .social-icon{
+
+    width:20px;
+
+    height:20px;
+
+    flex-shrink:0;
 
 }
 
@@ -1406,7 +1713,7 @@ section{
     /* КОНТАКТЫ */
 
     .socials {
-        gap: 15px;
+        gap: 14px;
     }
 
 }
@@ -1575,35 +1882,26 @@ section{
     }
 
     .socials {
-        flex-direction: column;
         align-items: center;
     }
 
-    .social-card {
+    .social-primary {
+        max-width: 100%;
+        text-align: left;
+    }
+
+    .social-secondary {
+        flex-direction: column;
         width: 100%;
         max-width: 320px;
+    }
+
+    .social-mini {
+        justify-content: center;
+        width: 100%;
         box-sizing: border-box;
-        text-align: center;
     }
 
-
-    /* MODAL */
-
-    .modal-content {
-        width: calc(100% - 30px);
-        max-height: 90vh;
-        overflow-y: auto;
-        padding: 15px;
-        border-radius: 20px;
-    }
-
-    .modal-content img {
-        border-radius: 14px;
-    }
-
-    .modal-content h2 {
-        font-size: 28px;
-    }
 
     .modal-button {
         width: 100%;
@@ -1691,15 +1989,8 @@ section{
     }
 
 
-    /* MODAL */
-
-    .modal-content {
-        width: calc(100% - 20px);
-        padding: 10px;
-    }
-
-    .modal-content h2 {
-        font-size: 24px;
+    .modal-footer {
+        padding: 55px 18px 22px;
     }
 
 }

@@ -3,24 +3,28 @@
     "id": 1,
     "title": "Бордовая классика",
     "category": "Свадьба",
+    "price": 1600,
     "image": "images/wedding/wedding1.jpg"
   },
   {
     "id": 2,
     "title": "Бело-зеленая свадьба",
     "category": "Свадьба",
+    "price": 1600,
     "image": "images/wedding/wedding2.jpg"
   },
   {
     "id": 3,
     "title": "Birthday PINK",
     "category": "День рождения",
+    "price": 1600,
     "image": "images/birthday/birthday1.jpg"
   },
   {
     "id": 4,
     "title": "Birthday классика",
     "category": "День рождения",
+    "price": 1600,
     "image": "images/birthday/birthday2.jpg"
   }
 ]
