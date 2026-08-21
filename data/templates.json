@@ -14,6 +14,34 @@
     "image": "images/wedding/wedding2.jpg"
   },
   {
+    "id": 2,
+    "title": "Любовь",
+    "category": "Свадьба",
+    "price": 1600,
+    "image": "images/wedding/wedding3.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Голубо-белая свадьба",
+    "category": "Свадьба",
+    "price": 1600,
+    "image": "images/wedding/wedding4.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Черно-белая классика",
+    "category": "Свадьба",
+    "price": 1600,
+    "image": "images/wedding/wedding5.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Нежный шоколад",
+    "category": "Свадьба",
+    "price": 1600,
+    "image": "images/wedding/wedding6.jpg"
+  },
+  {
     "id": 3,
     "title": "Birthday PINK",
     "category": "День рождения",
@@ -26,5 +54,12 @@
     "category": "День рождения",
     "price": 1600,
     "image": "images/birthday/birthday2.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Операция день рождения",
+    "category": "День рождения",
+    "price": 1600,
+    "image": "images/birthday/birthday3.jpg"
   }
 ]
