@@ -12,6 +12,14 @@ html{
     scroll-behavior:smooth;
 }
 
+p{
+
+    line-height:1.8;
+
+    letter-spacing:.15px;
+
+}
+
 body{
 
     font-family:'Inter',sans-serif;
@@ -21,6 +29,12 @@ body{
     color:#2B2B2B;
 
     overflow-x:hidden;
+
+    -webkit-font-smoothing:antialiased;
+
+    -moz-osx-font-smoothing:grayscale;
+
+    text-rendering:optimizeLegibility;
 
 }
 
@@ -482,9 +496,13 @@ section{
 
 .catalog-header p{
 
-    color:#888;
+    color:#777;
 
     font-size:18px;
+
+    max-width:520px;
+
+    margin:16px auto 0;
 
 }
 
@@ -521,13 +539,21 @@ section{
 
     background:white;
 
+    appearance:none;
+
+    -webkit-appearance:none;
+
     padding:15px 25px;
 
     border-radius:50px;
 
     cursor:pointer;
 
+    font-family:inherit;
+
     font-size:15px;
+
+    color:#2b2b2b;
 
     transition:.35s;
 
@@ -1009,6 +1035,12 @@ body.modal-open{
 
 }
 
+.modal-nav.is-hidden{
+
+    display:none !important;
+
+}
+
 .modal-prev{ left:20px; }
 
 .modal-next{ right:20px; }
@@ -1145,6 +1177,10 @@ body.modal-open{
 
     border:none;
 
+    appearance:none;
+
+    -webkit-appearance:none;
+
     padding:25px 30px;
 
     display:flex;
@@ -1155,9 +1191,13 @@ body.modal-open{
 
     cursor:pointer;
 
+    font-family:inherit;
+
     font-size:18px;
 
     font-weight:600;
+
+    color:#2b2b2b;
 
     text-align:left;
 

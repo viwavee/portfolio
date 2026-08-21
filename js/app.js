@@ -166,9 +166,9 @@ function updateModalContent() {
 
     const multiple = displayedTemplates.length > 1;
 
-    modalPrev.style.display = multiple ? "flex" : "none";
+    modalPrev.classList.toggle("is-hidden", !multiple);
 
-    modalNext.style.display = multiple ? "flex" : "none";
+    modalNext.classList.toggle("is-hidden", !multiple);
 
 }
 
@@ -319,9 +319,9 @@ reviewImages.forEach(image => {
 
         modalButton.style.display = "none";
 
-        modalPrev.style.display = "none";
+        modalPrev.classList.add("is-hidden");
 
-        modalNext.style.display = "none";
+        modalNext.classList.add("is-hidden");
 
         modal.classList.add("active");
 
