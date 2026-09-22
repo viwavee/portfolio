@@ -298,6 +298,37 @@ modalButton.addEventListener("click", (event) => {
 });
 
 // =====================================
+// Карусель отзывов (стрелки для мыши)
+// =====================================
+
+const reviewsGallery = document.getElementById("reviewsGallery");
+const reviewsPrev = document.querySelector(".reviews-prev");
+const reviewsNext = document.querySelector(".reviews-next");
+
+function scrollReviews(direction) {
+
+    if (!reviewsGallery) return;
+
+    const firstImg = reviewsGallery.querySelector("img");
+
+    if (!firstImg) return;
+
+    const gap = parseFloat(getComputedStyle(reviewsGallery).columnGap) || 30;
+
+    const step = firstImg.getBoundingClientRect().width + gap;
+
+    reviewsGallery.scrollBy({ left: direction * step, behavior: "smooth" });
+
+}
+
+if (reviewsPrev && reviewsNext) {
+
+    reviewsPrev.addEventListener("click", () => scrollReviews(-1));
+    reviewsNext.addEventListener("click", () => scrollReviews(1));
+
+}
+
+// =====================================
 // Увеличение отзывов
 // =====================================
 
